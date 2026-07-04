@@ -10,9 +10,12 @@ import {
     DollarSign, Loader2, Plus, Info, ChevronRight, Check
 } from "lucide-react";
 
+import LoginModal from "@/components/shared/LoginModal";
+
 export default function AddDestinationClient() {
     const { data: session, status } = useSession();
     const router = useRouter();
+    const [showLoginModal, setShowLoginModal] = useState(true);
 
     const [formData, setFormData] = useState({
         title: "",
@@ -39,8 +42,15 @@ export default function AddDestinationClient() {
     }
 
     if (status === "unauthenticated") {
-        router.push("/login");
-        return null;
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-slate-50">
+                <LoginModal 
+                    isOpen={showLoginModal} 
+                    onClose={() => router.push("/")} 
+                    redirectTo="/add-destination" 
+                />
+            </div>
+        );
     }
 
     const handleImageChange = (e) => {

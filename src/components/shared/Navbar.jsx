@@ -4,15 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { Menu, X, User, LogOut, PlusCircle, LayoutDashboard, ChevronDown, Calendar, MessageSquare } from "lucide-react";
-import LoginModal from "@/components/shared/LoginModal";
 
 export default function Navbar() {
-    // Navbar Version: 1.3 (Added Login Modal)
+    // Navbar Version: 1.2 (Updated Labels)
     const { data: session } = useSession();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
-    const [showLoginModal, setShowLoginModal] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -43,8 +41,6 @@ export default function Navbar() {
         >
             {/* Scroll Progress Bar */}
             <div className="absolute top-0 left-0 h-[2px] bg-sky-600 transition-all duration-150 z-[60]" id="scroll-progress"></div>
-
-            <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} redirectTo="/add-destination" />
 
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className="flex justify-between items-center">
@@ -153,9 +149,6 @@ export default function Navbar() {
                             </div>
                         ) : (
                             <div className="flex items-center gap-4">
-                                <button onClick={() => setShowLoginModal(true)} className="text-slate-600 font-medium hover:text-sky-600 transition-colors">
-                                    Add Destination
-                                </button>
                                 <Link href="/login" className="text-slate-600 font-medium hover:text-sky-600 transition-colors">
                                     Login
                                 </Link>
@@ -257,15 +250,6 @@ export default function Navbar() {
                             </>
                         ) : (
                             <div className="flex flex-col gap-3">
-                                <button
-                                    onClick={() => {
-                                        setIsOpen(false);
-                                        setShowLoginModal(true);
-                                    }}
-                                    className="text-center py-2 text-slate-700 font-medium border border-slate-200 rounded-xl"
-                                >
-                                    Add Destination
-                                </button>
                                 <Link
                                     href="/login"
                                     onClick={() => setIsOpen(false)}
