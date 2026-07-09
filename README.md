@@ -1,6 +1,6 @@
 # 🌍 FindtionTravel - Full-Stack Travel Platform
 
-**Live Site:** [https://FindtionTravel-nu.vercel.app/](https://FindtionTravel-nu.vercel.app/)
+**Live Site:** (https://findtion-travel-1.vercel.app/)
 
 FindtionTravel is a premium, full-stack travel destination showcase built with **Next.js 15 (App Router)** and **MongoDB**. It features a modern, responsive design with role-based authentication, secure image uploads, and comprehensive content management for both administrators and travelers.
 
